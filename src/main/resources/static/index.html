@@ -1,0 +1,73 @@
+<body>
+
+<div id="chat">
+    <h2 style="text-align: center">Chat:</h2>
+
+    <div id="timer" style="text-align: center"> Temps restant : 30s </div>
+    <hr>
+
+    <div>
+
+        <div id="log"></div>
+
+        <div>
+            <input id="msg" placeholder="Entrer votre message ..."/>
+            <button onclick="send()">Envoyer</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    const log = document.getElementById("log");
+    const  time = document.getElementById("timer");
+    const msg = document.getElementById('msg');
+    const chat = document.getElementById("chat");
+
+    const wsUrl = `ws://${location.host}/chat/ws`;
+    const ws = new WebSocket(wsUrl);
+
+    let tempsRestant = 140;
+
+    // logide du chrono
+    const countdown = setInterval(() => {
+        tempsRestant--;
+        time.innerText = `Temps restant : ${tempsRestant}s`;
+        if (tempsRestant <= 0) {
+            clearInterval(countdown); // On arrête le chrono
+            chat.innerText = "VOTEZ MAINTENANT !";
+        }
+    }, 1000);
+
+    function addMessage(msg) {
+        log.innerText += msg + '\n';
+        log.scrollTop = log.scrollHeight
+    }
+
+    ws.onopen = () => { addMessage("vous avez 30 secondes pour discuter.")}
+
+
+    ws.onmessage = (e) => { addMessage(e.data)}
+
+    ws.onclose = () => { }
+
+    ws.onerror = () => { }
+
+
+
+    function send() {
+        const message = document.getElementById("msg");
+        ws.send(message.value);
+        message.value = '';
+    }
+
+    msg.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") send();
+    });
+
+</script>
+
+</body>
