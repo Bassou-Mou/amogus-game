@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0d0d1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Courier New', monospace;
+  color: #a0a0c0;
+}
+
+h1 {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #5566ff;
+  margin-bottom: 12px;
+}
+
+#game-container {
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(85, 102, 255, 0.15);
+}
+
+#status-bar {
+  display: flex;
+  gap: 28px;
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  align-items: center;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.dot.connected {
+  background: #44ff88;
+  box-shadow: 0 0 6px #44ff88;
+}
+
+.dot.disconnected {
+  background: #ff4455;
+}
+
+#player-list {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 11px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.player-badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+}
+
+#log-panel {
+  margin-top: 12px;
+  width: 700px;
+  background: #0a0a14;
+  border: 1px solid #1a1a2e;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: #5566aa;
+  max-height: 90px;
+  overflow-y: auto;
+}
+
+#log-panel p {
+  margin: 2px 0;
+}
+
+.entry-ws {
+  color: #44cc88;
+}
+
+.entry-join {
+  color: #ffaa44;
+}
+
+.entry-err {
+  color: #ff4455;
+}

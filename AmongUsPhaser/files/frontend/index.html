@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Multiplayer Game</title>
+  <style>
+    body { background: #0d0d1a; display: flex; flex-direction: column; align-items: center; 
+           font-family: monospace; color: #a0a0c0; }
+    #game-container { border: 1px solid #2a2a4a; border-radius: 8px; }
+    #status { margin: 10px; }
+    .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+    .dot.connected { background: #44ff88; }
+    .dot.disconnected { background: #ff4455; }
+  </style>
+</head>
+<body>
+  <h1>Multiplayer Game</h1>
+  <div id="game-container"></div>
+  <div id="status">
+    <span class="dot disconnected" id="ws-dot"></span>
+    <span id="ws-label">Disconnected</span> | 
+    My ID: <span id="my-id">—</span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
